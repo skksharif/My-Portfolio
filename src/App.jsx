@@ -1,6 +1,7 @@
 import { useState } from "react";
 import "./App.css";
 import { TypeAnimation } from "react-type-animation";
+import Projects from "./components/Projects";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -61,6 +62,7 @@ function App() {
         </div>
         <button className="explore-btn"><img src="./assets/icons/white-arrow-down.png" alt="" /></button>
       </div>
+      <Projects/>
     </>
   );
 }

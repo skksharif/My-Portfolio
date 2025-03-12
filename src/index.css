@@ -3,6 +3,11 @@
   padding: 0;
   box-sizing: border-box;
 }
+body{
+  font-family: "Comfortaa", sans-serif;
+  font-style: normal;
+  overflow-x: hidden;
+}
 a{
   text-decoration: none;
 }
