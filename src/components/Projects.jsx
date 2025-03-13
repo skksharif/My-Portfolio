@@ -23,10 +23,8 @@ const Projects = () => {
         start: "top top",
         end: "2000 80%",
         toggleActions: "play pause resume resume",
-        markers: true,
         scrub: 0.6,
-        pin: true,
-        markers:false
+        pin: true
       }
     });
     return ()=>{
@@ -40,7 +38,8 @@ const Projects = () => {
         <div ref={triggerRef}>
           <div ref={sectionRef} className="scroll-section-inner">
              <div className="scroll-section">
-               <h3>Section 1</h3>
+               <div className="blue-circle"></div>
+               <h3 className="projects-title">Freelance Projects</h3>
              </div>
              <div className="scroll-section">
                <h3>Section 2</h3>

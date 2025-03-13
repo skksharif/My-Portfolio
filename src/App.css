@@ -106,7 +106,7 @@ nav ul li a {
     transform: translateY(0);
   }
   50% {
-    transform: translateY(-5px);
+    transform: translateY(-10px);
   }
   100% {
     transform: translateY(0);
@@ -117,7 +117,7 @@ nav ul li a {
   cursor: pointer;
   cursor: pointer;
   transition: background 0.3s ease;
-  animation: bounce 1.2s ease infinite;
+  animation: bounce 1.5s ease infinite;
 }
 .explore-btn img {
   width: 20px;
