@@ -38,7 +38,7 @@ const Projects = () => {
         <div ref={triggerRef}>
           <div ref={sectionRef} className="scroll-section-inner">
              <div className="scroll-section">
-               <div className="blue-circle"></div>
+               <div className="background"></div>
                <h3 className="projects-title">Freelance Projects</h3>
              </div>
              <div className="scroll-section">
