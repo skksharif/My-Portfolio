@@ -3,6 +3,8 @@ import "./App.css";
 import { TypeAnimation } from "react-type-animation";
 import Projects from "./components/Projects";
 
+
+
 function App() {
   const [count, setCount] = useState(0);
 

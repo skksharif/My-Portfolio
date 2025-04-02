@@ -49,24 +49,25 @@ const Projects = () => {
                   src="./assets/freelance-projects/memoriemakers.png"
                   alt=""
                 />
-                <div className="project-content">
-                  <h4>Project Title</h4>
-                  <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Donec euismod, ligula ac consectetur fermentum, neque velit
-                    iaculis velit, et sollicitudin arcu quam vel justo.
-                  </p>
-                  <a href="#" className="project-link">
-                    View Project
-                  </a>
-                </div>
               </div>
             </div>
             <div className="scroll-section">
-              <h3>Section 3</h3>
+            <div className="project">
+                <div className="project-shadow"></div>
+                <img
+                  src="./assets/freelance-projects/memoriemakers.png"
+                  alt=""
+                />
+              </div>
             </div>
             <div className="scroll-section">
-              <h3>Section 4</h3>
+            <div className="project">
+                <div className="project-shadow"></div>
+                <img
+                  src="./assets/freelance-projects/memoriemakers.png"
+                  alt=""
+                />
+              </div>
             </div>
           </div>
         </div>
