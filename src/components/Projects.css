@@ -39,8 +39,6 @@
   align-items: center;
   width: 100%;
   position: relative;
-  flex-direction: row; /* Align image and content side by side */
-  gap: 20px; /* Space between image and content */
 }
 
 .project-content {
@@ -91,39 +89,35 @@
 
 .projects-title {
   font-size: 80px;
+  width: 88%;
   font-weight: lighter;
-  text-align: center;
-  color: #ffffff;
+  color: #e9e8e8;
+  margin-left: -100px;
   font-family: "Dancing Script", cursive;
-  position: relative;
   z-index: 1;
 }
 
-.background {
+.title-background {
   width: 800px;
-  height: 300px;
-  background: linear-gradient(white, white, #d10069, #3eb0f7, white, white);
+  height: 200px;
+  background: linear-gradient( #d10069, #3eb0f7);
   filter: blur(100px);
-  position: absolute;
+  position: relative;
   z-index: -1;
-  top: 50%;
-  left: 50%;
+  top: 20%;
+  left: 45%;
   transform: translate(-50%, -50%);
 }
 
 @media (max-width: 767px) {
   .scroll-section-outer {
-    margin-top: 160px;
+    margin-top:0;
   }
 
   .projects-title {
-    font-size: 40px;
-  }
+    font-size: 60px;
+    margin-right: 100px;
 
-  .background {
-    width: 300px;
-    height: 300px;
-    background: linear-gradient(white, #d10069, #3eb0f7, white);
   }
 
   .project {
@@ -135,6 +129,15 @@
     max-width: 300px;
     padding: 15px;
     transform: rotate(-20deg);
+  }
+  .project-content h4{
+    font-size: 18px;
+  }
+  .project-content p{
+    font-size: 16px;
+  }
+  .project-content a{
+    font-size: 14px;
   }
 
   .project img {
