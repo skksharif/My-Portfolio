@@ -121,7 +121,7 @@
   }
 
   .project {
-    flex-direction: column; /* Stack image and content vertically on small screens */
+    flex-direction: column;
     gap: 10px;
   }
 

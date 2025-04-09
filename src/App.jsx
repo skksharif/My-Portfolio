@@ -6,6 +6,7 @@ import Projects from "./components/Projects";
 import StudentIDCard from "./components/StudentIDCard";
 import BlurText from "./react-bits/BlurText/BlurText";
 import SplitText from "./react-bits/SplitText/SplitText";
+import Skills from "./components/Skills";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -84,8 +85,10 @@ function App() {
         </div>
       </div>
       <StudentIDCard />
+      
 
       <Projects />
+      <Skills/>
     </>
   );
 }

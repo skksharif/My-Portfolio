@@ -13,7 +13,7 @@ const StudentIDCard = () => {
   const [isHovered, setIsHovered] = useState(false);
   const { scrollY } = useScroll();
 
-  const bgOpacity = useTransform(scrollY, [0, 1000], [0.2, 1]);
+  const bgOpacity = useTransform(scrollY, [0, 1000], [0, 0.8]);
 
   useEffect(() => {
     if (!isHovered) {
