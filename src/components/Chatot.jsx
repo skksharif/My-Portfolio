@@ -3,17 +3,14 @@ import { GoogleGenerativeAI } from "@google/generative-ai";
 import { userData } from "./user"; // Import user data
 import "./ChatBot.css";
 
-const ChatBot = () => { 
-  
+const ChatBot = () => {
   const [messages, setMessages] = useState([
     { role: "bot", text: "Hey! Ask me anything about Shaik Khasim Sharif 👨‍💻" },
   ]);
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
 
-  const genAI = new GoogleGenerativeAI(
-    "AIzaSyBVW0nIrXofWHIzZ5LbYsFWx-VrQlOBFrE"
-  );
+  const genAI = new GoogleGenerativeAI(process.env.REACT_APP_API_KEY);
 
   // Synonym normalization for categories
   const normalizeKeywords = (question) => {
