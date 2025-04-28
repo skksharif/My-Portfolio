@@ -11,6 +11,7 @@ import "font-awesome/css/font-awesome.min.css";
 import Skills from "./components/Skills";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import ChatBot from "./components/Chatot";
+import ResumeCard from "./components/ResumeCard";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -47,13 +48,14 @@ function App() {
             <a href="#projects">projects</a>
           </li>
           <li>
-            <a href="#bot">sharif</a>
+            <a href="#resume">resume</a>
           </li>
           <li>
-            <a href="#resume" id="optional">
-              resume
+            <a href="#college" id="optional">
+              College
             </a>
           </li>
+
           <li>
             <a href="#contact" id="optional">
               Contact
@@ -109,10 +111,12 @@ function App() {
           </a>
         </div>
       </div>
-
-      <StudentIDCard />
-      <Projects />
       <Skills />
+
+      <Projects />
+
+      <ResumeCard/>
+      <StudentIDCard />
 
       {/* Fixed Chatbot Button */}
       <div className="chatbot-button" onClick={toggleChat}>

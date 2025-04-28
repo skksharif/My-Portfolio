@@ -1,4 +1,3 @@
-/* Root variables for consistent theming */
 :root {
   --core-gradient: linear-gradient(45deg, #00d4ff, #ff00ff);
   --background-light: rgba(255, 255, 255, 0.1);
@@ -35,6 +34,11 @@
   box-shadow: 0 0 20px var(--shadow-glow), 0 0 40px rgba(0, 212, 255, 0.3);
   z-index: 1;
   animation: core-glow 3s infinite alternate;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  cursor: pointer;
 }
 
 /* Orbiting Skill Container */
@@ -70,7 +74,6 @@
   align-items: center;
   justify-content: center;
   color: #fff;
-  font-family: 'Montserrat', sans-serif;
   font-size: 1rem;
   font-weight: 600;
   text-shadow: var(--text-shadow);
@@ -174,6 +177,7 @@
   .core {
     width: 50px;
     height: 50px;
+    font-size: 11px;
   }
 
   .orb {

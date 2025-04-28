@@ -3,7 +3,7 @@ export const userData = {
     name: "Shaik Khasim Sharif",
     title: "Full-Stack Developer",
     skills: [
-      "C++",
+      "Java",
       "Python",
       "Javascript",
       "Typescript (Beginner)",
@@ -13,7 +13,6 @@ export const userData = {
       "Next.js",
       "Nodejs",
       "Expressjs",
-      "Flask",
       "SQL",
       "MongoDB",
       "Git",

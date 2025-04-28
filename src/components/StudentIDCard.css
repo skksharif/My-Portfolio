@@ -1,7 +1,7 @@
 /* Card Background - only behind card */
 .card-bg {
   background-image: url("./college.png"),
-    linear-gradient(rgba(255, 255, 255, 0.327), rgba(255, 255, 255, 0.464));
+    linear-gradient(rgba(255, 255, 255, 0.127), rgba(255, 255, 255, 0.164));
   background-size: cover;
   background-position: center;
   position: absolute;
@@ -83,8 +83,8 @@
   width: 90%;
   max-width: 420px;
   padding: 24px;
-  background: rgba(255, 255, 255, 0.2);
-  backdrop-filter: blur(14px);
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(24px);
   border-radius: 20px;
   box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
   border: 1px solid rgba(255, 255, 255, 0.3);

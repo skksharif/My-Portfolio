@@ -91,7 +91,6 @@ const ChatBot = () => {
         "online presence",
         "github",
         "linkedin",
-        "twitter",
       ],
       address: [
         "address",
