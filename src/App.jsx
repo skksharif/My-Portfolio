@@ -113,10 +113,9 @@ function App() {
       </div>
       <Skills />
 
-      <Projects />
-
-      <ResumeCard/>
+      <ResumeCard />
       <StudentIDCard />
+      <Projects />
 
       {/* Fixed Chatbot Button */}
       <div className="chatbot-button" onClick={toggleChat}>
