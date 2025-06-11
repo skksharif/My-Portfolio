@@ -7,17 +7,17 @@ import {
   useTransform,
 } from 'framer-motion';
 
-const StudentIDCard = () => {
+const StudentIDCard = ({ isDarkMode }) => {
   const rotateZ = useMotionValue(0);
   const [isHovered, setIsHovered] = useState(false);
   const { scrollY } = useScroll();
 
-  const bgOpacity = useTransform(scrollY, [0, 1000], [0, 0.8]);
+  const bgOpacity = useTransform(scrollY, [0, 1000], [0, 0.6]);
 
   useEffect(() => {
     if (!isHovered) {
-      animate(rotateZ, [0, 8, -8, 0], {
-        duration: 2.5,
+      animate(rotateZ, [0, 6, -6, 0], {
+        duration: 2,
         repeat: Infinity,
         ease: 'easeInOut',
         type: 'tween',
@@ -33,11 +33,11 @@ const StudentIDCard = () => {
       lastScrollY = currentScrollY;
 
       if (!isHovered) {
-        const nudge = Math.max(-10, Math.min(10, delta * 0.5));
+        const nudge = Math.max(-8, Math.min(8, delta * 0.3));
         animate(rotateZ, nudge, {
           type: 'spring',
-          stiffness: 80,
-          damping: 15,
+          stiffness: 60,
+          damping: 12,
         });
       }
     };
@@ -46,47 +46,72 @@ const StudentIDCard = () => {
   }, [isHovered, rotateZ]);
 
   return (
-    <div className="flex flex-col items-center pt-24 min-h-screen relative" id="college">
+    <div className="flex flex-col items-center pt-20 min-h-screen relative" id="college">
       {/* Card Background */}
       <motion.div 
-        className="absolute w-[90%] max-w-[1400px] h-full z-[-1] blur-[3px] rounded-2xl transition-opacity duration-500 bg-cover bg-center"
+        className={`absolute w-[90%] max-w-[1200px] h-full z-[-1] blur-[2px] rounded-2xl transition-all duration-500 bg-cover bg-center ${
+          isDarkMode ? 'opacity-40' : 'opacity-60'
+        }`}
         style={{ 
           opacity: bgOpacity,
-          backgroundImage: `url("./src/components/college.png"), linear-gradient(rgba(255, 255, 255, 0.127), rgba(255, 255, 255, 0.164))`
+          backgroundImage: `url("./src/components/college.png"), ${
+            isDarkMode 
+              ? 'linear-gradient(rgba(139, 92, 246, 0.1), rgba(59, 130, 246, 0.1))' 
+              : 'linear-gradient(rgba(255, 255, 255, 0.127), rgba(255, 255, 255, 0.164))'
+          }`
         }}
       />
       
       {/* String */}
-      <div className="w-1 h-[140px] md:h-[140px] bg-gradient-to-b from-gray-800 to-gray-600 rounded-sm shadow-[0_0_4px_rgba(0,0,0,0.2),inset_0_0_2px_rgba(255,255,255,0.3)] relative z-20 animate-sway origin-top before:content-[''] before:w-3 before:h-3 before:bg-gray-800 before:border-2 before:border-gray-500 before:rounded-full before:absolute before:-top-2 before:left-1/2 before:transform before:-translate-x-1/2 before:shadow-[0_2px_5px_rgba(0,0,0,0.3)] after:content-[''] after:w-2 after:h-2 after:bg-gray-700 after:rounded-sm after:absolute after:-bottom-1 after:left-1/2 after:transform after:-translate-x-1/2 after:shadow-[inset_0_0_2px_rgba(255,255,255,0.2)]">
+      <div 
+        className={`w-1 h-[120px] md:h-[120px] rounded-sm shadow-lg relative z-20 animate-sway origin-top transition-all duration-500 ${
+          isDarkMode 
+            ? 'bg-gradient-to-b from-gray-600 to-gray-500' 
+            : 'bg-gradient-to-b from-gray-800 to-gray-600'
+        }`}
+        data-aos="fade-down"
+        data-aos-duration="600"
+      >
+        <div className={`w-3 h-3 border-2 rounded-full absolute -top-2 left-1/2 transform -translate-x-1/2 shadow-lg transition-colors duration-500 ${
+          isDarkMode ? 'bg-gray-600 border-gray-400' : 'bg-gray-800 border-gray-500'
+        }`}></div>
+        <div className={`w-2 h-2 rounded-sm absolute -bottom-1 left-1/2 transform -translate-x-1/2 transition-colors duration-500 ${
+          isDarkMode ? 'bg-gray-500' : 'bg-gray-700'
+        }`}></div>
       </div>
 
       {/* Card */}
       <motion.div
-        className="w-[90%] max-w-[420px] p-6 bg-white/10 backdrop-blur-[24px] rounded-3xl shadow-[0_20px_50px_rgba(0,0,0,0.3)] border border-white/30 transition-all duration-300 hover:scale-103 hover:shadow-[0_25px_60px_rgba(0,0,0,0.35)] relative z-[-1]"
+        className={`w-[90%] max-w-[380px] p-5 backdrop-blur-[20px] rounded-3xl shadow-2xl border transition-all duration-500 hover:scale-105 hover:shadow-3xl relative z-[-1] ${
+          isDarkMode 
+            ? 'bg-gray-800/30 border-gray-700/40 hover:bg-gray-800/40' 
+            : 'bg-white/20 border-white/30 hover:bg-white/30'
+        }`}
         style={{ rotateZ, transformOrigin: 'top center' }}
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
+        data-aos="fade-up"
+        data-aos-duration="800"
+        data-aos-delay="200"
       >
         <img
           src="./assets/mine/sharif.jpg"
           alt="Student"
-          className="w-[45%] md:w-[45%] aspect-square rounded-full object-cover border-3 border-blue-500 block mx-auto mb-4 shadow-[0_4px_12px_rgba(0,0,0,0.2)]"
+          className={`w-[40%] md:w-[40%] aspect-square rounded-full object-cover border-3 block mx-auto mb-3 shadow-xl transition-all duration-300 ${
+            isDarkMode ? 'border-purple-500' : 'border-blue-500'
+          }`}
         />
-        <h2 className="text-center text-lg md:text-xl font-bold text-white mb-1.5 text-shadow-[0_1px_2px_rgba(0,0,0,0.3)]">
+        <h2 className={`text-center text-base md:text-lg font-bold mb-1 text-shadow-sm transition-colors duration-500 ${
+          isDarkMode ? 'text-white' : 'text-gray-800'
+        }`}>
           Lakireddy Bali Reddy College of Engineering
         </h2>
-        <p className="text-center text-base md:text-lg text-gray-300 text-shadow-[0_1px_2px_rgba(0,0,0,0.2)]">
+        <p className={`text-center text-sm md:text-base text-shadow-sm transition-colors duration-500 ${
+          isDarkMode ? 'text-gray-300' : 'text-gray-600'
+        }`}>
           Information Technology
         </p>
       </motion.div>
-
-      <style jsx>{`
-        @keyframes sway {
-          0% { transform: rotate(0deg); }
-          50% { transform: rotate(2deg); }
-          100% { transform: rotate(0deg); }
-        }
-      `}</style>
     </div>
   );
 };

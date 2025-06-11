@@ -1,15 +1,25 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { GoogleGenerativeAI } from "@google/generative-ai";
 import { userData } from "./user";
 
-const ChatBot = () => {
+const ChatBot = ({ isDarkMode }) => {
   const [messages, setMessages] = useState([
     { role: "bot", text: "Hey! Ask me anything about Shaik Khasim Sharif 👨‍💻" },
   ]);
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
+  const messagesEndRef = useRef(null);
+  const inputRef = useRef(null);
 
   const genAI = new GoogleGenerativeAI(process.env.REACT_APP_API_KEY);
+
+  const scrollToBottom = () => {
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
+
+  useEffect(() => {
+    scrollToBottom();
+  }, [messages]);
 
   // Synonym normalization for categories
   const normalizeKeywords = (question) => {
@@ -220,7 +230,7 @@ const ChatBot = () => {
         const formattedReply = reply.replace(
           /(https?:\/\/[^\s]+)/g,
           (url) =>
-            `<a href="${url}" target="_blank" rel="noopener noreferrer">${url}</a>`
+            `<a href="${url}" target="_blank" rel="noopener noreferrer" class="text-blue-500 hover:text-blue-600 underline">${url}</a>`
         );
 
         setMessages([...newMessages, { role: "bot", text: formattedReply }]);
@@ -239,51 +249,101 @@ const ChatBot = () => {
     setLoading(false);
   };
 
+  const handleKeyPress = (e) => {
+    if (e.key === "Enter" && !e.shiftKey) {
+      e.preventDefault();
+      sendMessage();
+    }
+  };
+
   return (
-    <div className="w-full max-w-[600px] h-[500px] bg-white/10 rounded-3xl shadow-[0_8px_32px_rgba(0,0,0,0.1)] backdrop-blur-[10px] border border-white/18 flex flex-col overflow-hidden font-sans">
+    <div className={`w-full h-full rounded-2xl flex flex-col overflow-hidden font-sans transition-all duration-300 ${
+      isDarkMode ? 'bg-gray-800/95' : 'bg-white/95'
+    }`}>
       {/* Header */}
-      <div className="bg-gradient-to-r from-purple-600 to-cyan-400 text-white p-4 text-center text-xl font-semibold border-b border-white/20">
-        <h3>Chat with SharifBot</h3>
+      <div className={`${
+        isDarkMode 
+          ? 'bg-gradient-to-r from-purple-600 to-blue-600' 
+          : 'bg-gradient-to-r from-purple-500 to-cyan-500'
+      } text-white p-3 text-center border-b border-white/10 transition-all duration-300`}>
+        <h3 className="text-lg font-semibold">Chat with SharifBot</h3>
+        <p className="text-xs opacity-80 mt-1">Ask me anything about Sharif!</p>
       </div>
 
       {/* Messages Container */}
-      <div className="flex-1 p-5 overflow-y-auto bg-gradient-to-b from-white/5 to-black/5 scrollbar-thin scrollbar-thumb-purple-600 scrollbar-track-transparent">
+      <div className={`flex-1 p-3 overflow-y-auto scrollbar-thin ${
+        isDarkMode 
+          ? 'scrollbar-thumb-purple-600 scrollbar-track-gray-700' 
+          : 'scrollbar-thumb-purple-400 scrollbar-track-gray-200'
+      } transition-all duration-300`}>
         {messages.map((msg, i) => (
-          <div key={i} className={`flex mb-4 animate-[fadeIn_0.3s_ease-in] ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}>
+          <div 
+            key={i} 
+            className={`flex mb-3 animate-fade-in ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}
+            style={{ animationDelay: `${i * 0.1}s` }}
+          >
             <div
-              className={`max-w-[70%] p-3 rounded-2xl text-sm leading-relaxed break-words ${
+              className={`max-w-[80%] p-3 rounded-2xl text-sm leading-relaxed break-words transition-all duration-300 hover:scale-[1.02] ${
                 msg.role === 'user' 
-                  ? 'bg-purple-600 text-white rounded-br-md' 
-                  : 'bg-white/90 text-gray-800 rounded-bl-md shadow-[0_2px_5px_rgba(0,0,0,0.1)]'
+                  ? isDarkMode
+                    ? 'bg-gradient-to-r from-purple-600 to-blue-600 text-white rounded-br-md shadow-lg'
+                    : 'bg-gradient-to-r from-purple-500 to-blue-500 text-white rounded-br-md shadow-lg'
+                  : isDarkMode
+                    ? 'bg-gray-700/80 text-gray-100 rounded-bl-md shadow-lg border border-gray-600/30'
+                    : 'bg-white/90 text-gray-800 rounded-bl-md shadow-lg border border-gray-200/50'
               }`}
               dangerouslySetInnerHTML={{ __html: msg.text }}
             />
           </div>
         ))}
         {loading && (
-          <div className="flex justify-start mb-4">
-            <div className="flex gap-1 bg-transparent p-3">
-              <span className="w-2 h-2 bg-purple-600 rounded-full animate-[bounce_1.2s_infinite]"></span>
-              <span className="w-2 h-2 bg-purple-600 rounded-full animate-[bounce_1.2s_infinite] [animation-delay:0.2s]"></span>
-              <span className="w-2 h-2 bg-purple-600 rounded-full animate-[bounce_1.2s_infinite] [animation-delay:0.4s]"></span>
+          <div className="flex justify-start mb-3">
+            <div className={`flex gap-1 p-3 rounded-2xl ${
+              isDarkMode ? 'bg-gray-700/80' : 'bg-white/90'
+            } shadow-lg animate-fade-in`}>
+              <span className={`w-2 h-2 rounded-full animate-bounce ${
+                isDarkMode ? 'bg-purple-400' : 'bg-purple-600'
+              }`} style={{ animationDelay: '0s' }}></span>
+              <span className={`w-2 h-2 rounded-full animate-bounce ${
+                isDarkMode ? 'bg-purple-400' : 'bg-purple-600'
+              }`} style={{ animationDelay: '0.2s' }}></span>
+              <span className={`w-2 h-2 rounded-full animate-bounce ${
+                isDarkMode ? 'bg-purple-400' : 'bg-purple-600'
+              }`} style={{ animationDelay: '0.4s' }}></span>
             </div>
           </div>
         )}
+        <div ref={messagesEndRef} />
       </div>
 
       {/* Input Container */}
-      <div className="flex p-4 bg-white/5 border-t border-white/10">
+      <div className={`flex p-3 border-t transition-all duration-300 ${
+        isDarkMode 
+          ? 'bg-gray-800/50 border-gray-700/30' 
+          : 'bg-white/50 border-gray-200/30'
+      }`}>
         <input
+          ref={inputRef}
           type="text"
           value={input}
           onChange={(e) => setInput(e.target.value)}
-          onKeyDown={(e) => e.key === "Enter" && sendMessage()}
+          onKeyPress={handleKeyPress}
           placeholder="Ask about Shaik Khasim Sharif..."
-          className="flex-1 p-2.5 px-4 border-none rounded-full bg-white/80 text-gray-800 text-sm outline-none transition-all duration-300 focus:bg-white focus:shadow-[0_0_10px_rgba(107,72,255,0.3)]"
+          className={`flex-1 p-2.5 px-4 border-none rounded-full text-sm outline-none transition-all duration-300 focus:ring-2 ${
+            isDarkMode
+              ? 'bg-gray-700/80 text-gray-100 placeholder-gray-400 focus:ring-purple-500/50 focus:bg-gray-700'
+              : 'bg-white/80 text-gray-800 placeholder-gray-500 focus:ring-purple-400/50 focus:bg-white'
+          }`}
+          disabled={loading}
         />
         <button 
           onClick={sendMessage} 
-          className="ml-2.5 w-10 h-10 bg-purple-600 border-none rounded-full flex items-center justify-center cursor-pointer transition-all duration-300 hover:bg-cyan-400 hover:scale-110"
+          disabled={loading || !input.trim()}
+          className={`ml-2 w-10 h-10 border-none rounded-full flex items-center justify-center cursor-pointer transition-all duration-300 hover:scale-110 disabled:opacity-50 disabled:cursor-not-allowed ${
+            isDarkMode
+              ? 'bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-500 hover:to-blue-500'
+              : 'bg-gradient-to-r from-purple-500 to-cyan-500 hover:from-purple-400 hover:to-cyan-400'
+          } shadow-lg`}
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -291,36 +351,13 @@ const ChatBot = () => {
             fill="none"
             stroke="white"
             strokeWidth="2"
-            className="w-5 h-5"
+            className="w-4 h-4"
           >
             <path d="M22 2L11 13" />
             <path d="M22 2L15 22L11 13L2 9L22 2Z" />
           </svg>
         </button>
       </div>
-
-      <style jsx>{`
-        @keyframes fadeIn {
-          from { opacity: 0; transform: translateY(10px); }
-          to { opacity: 1; transform: translateY(0); }
-        }
-        
-        @media (max-width: 480px) {
-          .chatbot-wrapper {
-            max-width: 100%;
-            height: 100vh;
-            border-radius: 0;
-          }
-          
-          .chatbot-header {
-            font-size: 1rem;
-          }
-          
-          .message-bubble {
-            max-width: 85%;
-          }
-        }
-      `}</style>
     </div>
   );
 };

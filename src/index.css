@@ -30,6 +30,11 @@ h1, h2, h3, h4, h5, h6, p {
   cursor: pointer;
 }
 
+/* Dark mode styles */
+.dark {
+  color-scheme: dark;
+}
+
 /* Custom utilities for complex animations and gradients */
 @layer utilities {
   .text-shadow-sm {
@@ -46,6 +51,10 @@ h1, h2, h3, h4, h5, h6, p {
   
   .scale-103 {
     transform: scale(1.03);
+  }
+  
+  .scale-125 {
+    transform: scale(1.25);
   }
   
   .scale-130 {
@@ -65,8 +74,20 @@ h1, h2, h3, h4, h5, h6, p {
     scrollbar-color: #9333ea transparent;
   }
   
+  .scrollbar-thumb-purple-400 {
+    scrollbar-color: #a855f7 transparent;
+  }
+  
   .scrollbar-track-transparent {
     scrollbar-color: #9333ea transparent;
+  }
+  
+  .scrollbar-track-gray-200 {
+    scrollbar-color: #9333ea #e5e7eb;
+  }
+  
+  .scrollbar-track-gray-700 {
+    scrollbar-color: #9333ea #374151;
   }
   
   /* Webkit scrollbar styles */
@@ -79,24 +100,128 @@ h1, h2, h3, h4, h5, h6, p {
     border-radius: 10px;
   }
   
+  .scrollbar-thumb-purple-400::-webkit-scrollbar-thumb {
+    background: #a855f7;
+    border-radius: 10px;
+  }
+  
   .scrollbar-track-transparent::-webkit-scrollbar-track {
     background: transparent;
+  }
+  
+  .scrollbar-track-gray-200::-webkit-scrollbar-track {
+    background: #e5e7eb;
+  }
+  
+  .scrollbar-track-gray-700::-webkit-scrollbar-track {
+    background: #374151;
   }
 }
 
 /* CSS Variables for orbit animation */
 :root {
-  --orbit-radius: 150px;
+  --orbit-radius: 120px;
 }
 
 @media (max-width: 768px) {
   :root {
-    --orbit-radius: 120px;
+    --orbit-radius: 100px;
   }
 }
 
 @media (max-width: 480px) {
   :root {
-    --orbit-radius: 90px;
+    --orbit-radius: 80px;
   }
+}
+
+/* Enhanced animations */
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(30px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes glow {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(139, 92, 246, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(139, 92, 246, 0.6);
+  }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.6s ease-out forwards;
+}
+
+.animate-slide-up {
+  animation: slide-up 0.4s ease-out forwards;
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.animate-glow {
+  animation: glow 2s ease-in-out infinite;
+}
+
+/* Smooth transitions for all interactive elements */
+button, a, input, .hover-effect {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Enhanced focus styles */
+button:focus, input:focus, a:focus {
+  outline: 2px solid rgba(139, 92, 246, 0.5);
+  outline-offset: 2px;
+}
+
+/* Improved hover effects */
+.hover-lift:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+.hover-scale:hover {
+  transform: scale(1.05);
+}
+
+/* Glass morphism effect */
+.glass {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.glass-dark {
+  background: rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
