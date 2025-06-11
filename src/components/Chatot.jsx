@@ -11,7 +11,7 @@ const ChatBot = ({ isDarkMode }) => {
   const messagesEndRef = useRef(null);
   const inputRef = useRef(null);
 
-  const genAI = new GoogleGenerativeAI(process.env.REACT_APP_API_KEY);
+  const genAI = new GoogleGenerativeAI(import.meta.env.VITE_GEMINI_API_KEY);
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
