@@ -82,10 +82,10 @@ const Projects = ({ isDarkMode }) => {
         <div ref={sectionRef} className="h-screen flex flex-row relative" style={{ width: 'calc(100vw * 6)' }}>
           {/* Title Section */}
           <div className="w-screen h-screen flex items-center justify-center transition-transform duration-500">
-            <div className={`w-[600px] h-[150px] blur-[80px] absolute z-[-1] top-[20%] left-[45%] transform -translate-x-1/2 -translate-y-1/2 transition-colors duration-500 ${
+            <div className={`w-[500px] h-[120px] blur-[100px] absolute z-[-1] top-[20%] left-[45%] transform -translate-x-1/2 -translate-y-1/2 transition-colors duration-500 ${
               isDarkMode 
-                ? 'bg-gradient-to-r from-purple-600 to-blue-600' 
-                : 'bg-gradient-to-r from-pink-600 to-blue-500'
+                ? 'bg-gradient-to-r from-purple-600/15 to-blue-600/15' 
+                : 'bg-gradient-to-r from-pink-600/20 to-blue-500/20'
             }`}></div>
             <h3 className={`text-3xl md:text-[60px] font-light -ml-6 md:-ml-20 font-dancing z-10 transition-colors duration-500 ${
               isDarkMode ? 'text-gray-100' : 'text-gray-200'
@@ -98,10 +98,10 @@ const Projects = ({ isDarkMode }) => {
           {projects.map((project, index) => (
             <div key={index} className="w-screen h-screen flex items-center justify-center transition-transform duration-500">
               <div className="flex flex-col md:flex-row justify-center items-center w-full relative gap-2 md:gap-0">
-                <div className={`w-[300px] h-[300px] blur-[80px] absolute z-[-1] top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 transition-colors duration-500 ${
+                <div className={`w-[250px] h-[250px] blur-[100px] absolute z-[-1] top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 transition-colors duration-500 ${
                   isDarkMode 
-                    ? 'bg-gradient-to-br from-purple-600 via-blue-600 to-indigo-600' 
-                    : 'bg-gradient-to-br from-white via-pink-600 to-blue-500'
+                    ? 'bg-gradient-to-br from-purple-600/12 via-blue-600/12 to-indigo-600/12' 
+                    : 'bg-gradient-to-br from-white/15 via-pink-600/15 to-blue-500/15'
                 }`}></div>
                 <img
                   src={project.image}
@@ -110,8 +110,8 @@ const Projects = ({ isDarkMode }) => {
                 />
                 <div className={`max-w-[280px] md:max-w-[450px] mx-0 p-4 md:p-5 backdrop-blur-[8px] border rounded-xl transform -rotate-12 hover:rotate-0 transition-all duration-500 hover:scale-105 shadow-xl ${
                   isDarkMode 
-                    ? 'bg-gray-800/60 border-gray-700/40' 
-                    : 'bg-white/60 border-white/20'
+                    ? 'bg-gray-800/40 border-gray-700/30' 
+                    : 'bg-white/40 border-white/30'
                 }`}>
                   <h4 className={`text-lg md:text-[26px] mb-2 font-semibold transition-colors duration-500 ${
                     isDarkMode ? 'text-white' : 'text-gray-800'

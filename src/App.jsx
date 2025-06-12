@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import Projects from "./components/Projects";
-import StudentIDCard from "./components/StudentIDCard";
 import BlurText from "./react-bits/BlurText/BlurText";
 import SplitText from "./react-bits/SplitText/SplitText";
 import "font-awesome/css/font-awesome.min.css";
@@ -10,7 +9,7 @@ import "font-awesome/css/font-awesome.min.css";
 import Skills from "./components/Skills";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import ChatBot from "./components/Chatot";
-import ResumeCard from "./components/ResumeCard";
+import ResumeAndCollege from "./components/ResumeAndCollege";
 import DarkModeToggle from "./components/DarkModeToggle";
 import ParallaxBackground from "./components/ParallaxBackground.jsx";
 
@@ -79,12 +78,7 @@ function App() {
             </li>
             <li>
               <a href="#resume" className="text-gray-700 dark:text-gray-300 font-comfortaa text-xs md:text-sm capitalize px-2 py-2 transition-all duration-300 hover:text-blue-600 dark:hover:text-blue-400 hover:scale-105">
-                resume
-              </a>
-            </li>
-            <li className="hidden md:block">
-              <a href="#college" className="text-gray-700 dark:text-gray-300 font-comfortaa text-xs md:text-sm capitalize px-2 py-2 transition-all duration-300 hover:text-blue-600 dark:hover:text-blue-400 hover:scale-105">
-                College
+                about
               </a>
             </li>
             <li className="hidden md:block">
@@ -170,8 +164,7 @@ function App() {
       </div>
 
       <Skills isDarkMode={isDarkMode} />
-      <ResumeCard isDarkMode={isDarkMode} />
-      <StudentIDCard isDarkMode={isDarkMode} />
+      <ResumeAndCollege isDarkMode={isDarkMode} />
       <Projects isDarkMode={isDarkMode} />
 
       {/* Fixed Chatbot Button */}
