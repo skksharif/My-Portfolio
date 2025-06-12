@@ -12,6 +12,7 @@ import ChatBot from "./components/Chatot";
 import ResumeAndCollege from "./components/ResumeAndCollege";
 import DarkModeToggle from "./components/DarkModeToggle";
 import ParallaxBackground from "./components/ParallaxBackground.jsx";
+import FloatingOrb from "./components/FloatingOrb.jsx";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -119,6 +120,16 @@ function App() {
           rootMargin="-30px"
           onLetterAnimationComplete={handleAnimationComplete}
         />
+
+        {/* 3D Floating Orb Component */}
+        <div 
+          className="mt-8 mb-6"
+          data-aos="fade-up"
+          data-aos-delay="800"
+          data-aos-duration="1000"
+        >
+          <FloatingOrb isDarkMode={isDarkMode} />
+        </div>
 
         <div className="flex justify-center items-center mt-6">
           <a
