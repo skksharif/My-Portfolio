@@ -13,6 +13,10 @@ import ResumeAndCollege from "./components/ResumeAndCollege";
 import DarkModeToggle from "./components/DarkModeToggle";
 import ParallaxBackground from "./components/ParallaxBackground.jsx";
 import FloatingOrb from "./components/FloatingOrb.jsx";
+import ContactSection from "./components/ContactSection.jsx";
+import TechStack from "./components/TechStack.jsx";
+import Timeline from "./components/Timeline.jsx";
+import Footer from "./components/Footer.jsx";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -80,6 +84,11 @@ function App() {
             <li>
               <a href="#resume" className="text-gray-700 dark:text-gray-300 font-comfortaa text-xs md:text-sm capitalize px-2 py-2 transition-all duration-300 hover:text-blue-600 dark:hover:text-blue-400 hover:scale-105">
                 about
+              </a>
+            </li>
+            <li>
+              <a href="#timeline" className="text-gray-700 dark:text-gray-300 font-comfortaa text-xs md:text-sm capitalize px-2 py-2 transition-all duration-300 hover:text-blue-600 dark:hover:text-blue-400 hover:scale-105">
+                journey
               </a>
             </li>
             <li className="hidden md:block">
@@ -172,11 +181,40 @@ function App() {
             />
           </a>
         </div>
+
+        {/* CTA Buttons */}
+        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mt-8" data-aos="fade-up" data-aos-delay="400">
+          <a
+            href="#contact"
+            className={`px-8 py-3 rounded-lg font-semibold transition-all duration-300 hover:scale-105 shadow-lg ${
+              isDarkMode
+                ? 'bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-500 hover:to-blue-500 text-white'
+                : 'bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-500 hover:to-purple-500 text-white'
+            }`}
+          >
+            Get In Touch
+          </a>
+          <a
+            href="./assets/mine/sharif-swdev.pdf"
+            download="Sharif_Resume.pdf"
+            className={`px-8 py-3 rounded-lg font-semibold transition-all duration-300 hover:scale-105 border-2 ${
+              isDarkMode
+                ? 'border-purple-600 text-purple-300 hover:bg-purple-600/10'
+                : 'border-blue-600 text-blue-600 hover:bg-blue-600/10'
+            }`}
+          >
+            Download Resume
+          </a>
+        </div>
       </div>
 
       <Skills isDarkMode={isDarkMode} />
+      <TechStack isDarkMode={isDarkMode} />
       <ResumeAndCollege isDarkMode={isDarkMode} />
+      <Timeline isDarkMode={isDarkMode} />
       <Projects isDarkMode={isDarkMode} />
+      <ContactSection isDarkMode={isDarkMode} />
+      <Footer isDarkMode={isDarkMode} />
 
       {/* Fixed Chatbot Button */}
       <div 
