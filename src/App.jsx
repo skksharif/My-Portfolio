@@ -1,12 +1,12 @@
-import React from 'react';
+import Home from './pages/Home';
+import Skills from './pages/Skills';
 
 function App() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-purple-50 flex items-center justify-center">
-      <h1 className="text-6xl md:text-8xl font-bold text-gray-800 font-dancing text-center">
-        Shaik Khasim Sharif
-      </h1>
-    </div>
+    <>
+        <Home/>
+        <Skills/>
+    </>
   );
 }
 
