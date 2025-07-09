@@ -26,8 +26,25 @@ ul {
   list-style: none;
 }
 
-h1, h2, h3, h4, h5, h6, p {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
   cursor: pointer;
 }
 
-
+@layer utilities {
+  .mask-container {
+    mask-image: url("/assets/cloud-mask.png"); /* Transparent PNG */
+    mask-repeat: no-repeat;
+    mask-size: contain;
+    mask-position: center;
+    -webkit-mask-image: url("/assets/cloud-mask.png");
+    -webkit-mask-repeat: no-repeat;
+    -webkit-mask-size: contain;
+    -webkit-mask-position: center;
+  }
+}

@@ -16,13 +16,12 @@ export default function Home() {
 
     // Animate image to slide out right
     gsap.to(el, {
-      x: window.innerWidth,
+      y: window.innerWidth,
       scrollTrigger: {
         trigger: el,
         start: "top top",
-        end: "bottom top",
+        end: "bottom end",
         scrub: true,
-        markers: true,
       },
     });
 
@@ -40,7 +39,7 @@ export default function Home() {
 
   return (
     <div className="h-[150vh] w-screen bg-white overflow-hidden">
-      <Navbar />
+ 
 
       {/* Background Text Layer */}
       <div
