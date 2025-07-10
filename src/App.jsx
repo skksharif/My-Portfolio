@@ -12,7 +12,6 @@ function App() {
   return (
     <div className="relative" id="home">
       <Navbar />
-      <ThemeToggle />
       <HeroSection />
       <div id="about">
         <AboutSection />

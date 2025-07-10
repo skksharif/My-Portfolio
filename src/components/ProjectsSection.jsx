@@ -1,9 +1,9 @@
-import { useEffect, useRef } from 'react';
-import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import ScrollReveal from './ScrollReveal';
-import GlassCard from './GlassCard';
-import { FaGithub, FaExternalLinkAlt, FaCode } from 'react-icons/fa';
+import { useEffect, useRef } from "react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import ScrollReveal from "./ScrollReveal";
+import GlassCard from "./GlassCard";
+import { FaGithub, FaExternalLinkAlt, FaCode } from "react-icons/fa";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -12,71 +12,78 @@ const ProjectsSection = () => {
 
   const projects = [
     {
-      title: 'E-Commerce Platform',
-      description: 'Full-stack e-commerce solution with React, Node.js, and MongoDB. Features include user authentication, payment integration, and admin dashboard.',
-      image: './assets/freelance-projects/talentnest.png',
-      technologies: ['React', 'Node.js', 'MongoDB', 'Stripe', 'JWT'],
-      github: 'https://github.com/khasim-sharif/ecommerce',
-      live: 'https://ecommerce-demo.com',
-      gradient: 'from-blue-400/20 to-purple-400/20'
+      title: "E-Commerce Platform",
+      description:
+        "Full-stack e-commerce solution with React, Node.js, and MongoDB. Features include user authentication, payment integration, and admin dashboard.",
+      image: "./assets/freelance-projects/talentnest.png",
+      technologies: ["React", "Node.js", "MongoDB", "Stripe", "JWT"],
+      github: "https://github.com/khasim-sharif/ecommerce",
+      live: "https://ecommerce-demo.com",
+      gradient: "from-blue-400/20 to-purple-400/20",
     },
     {
-      title: 'Task Management App',
-      description: 'Collaborative task management application with real-time updates, drag-and-drop functionality, and team collaboration features.',
-      image: './assets/freelance-projects/memoriemakers.png',
-      technologies: ['React', 'Socket.io', 'Express', 'PostgreSQL'],
-      github: 'https://github.com/khasim-sharif/task-manager',
-      live: 'https://taskmanager-demo.com',
-      gradient: 'from-green-400/20 to-emerald-400/20'
+      title: "Task Management App",
+      description:
+        "Collaborative task management application with real-time updates, drag-and-drop functionality, and team collaboration features.",
+      image: "./assets/freelance-projects/memoriemakers.png",
+      technologies: ["React", "Socket.io", "Express", "PostgreSQL"],
+      github: "https://github.com/khasim-sharif/task-manager",
+      live: "https://taskmanager-demo.com",
+      gradient: "from-green-400/20 to-emerald-400/20",
     },
     {
-      title: 'Weather Dashboard',
-      description: 'Interactive weather dashboard with location-based forecasts, charts, and weather alerts using external APIs.',
-      image: './assets/freelance-projects/drsuja.png',
-      technologies: ['React', 'Chart.js', 'Weather API', 'Tailwind CSS'],
-      github: 'https://github.com/khasim-sharif/weather-dashboard',
-      live: 'https://weather-dashboard-demo.com',
-      gradient: 'from-orange-400/20 to-red-400/20'
+      title: "Weather Dashboard",
+      description:
+        "Interactive weather dashboard with location-based forecasts, charts, and weather alerts using external APIs.",
+      image: "./assets/freelance-projects/drsuja.png",
+      technologies: ["React", "Chart.js", "Weather API", "Tailwind CSS"],
+      github: "https://github.com/khasim-sharif/weather-dashboard",
+      live: "https://weather-dashboard-demo.com",
+      gradient: "from-orange-400/20 to-red-400/20",
     },
     {
-      title: 'Social Media App',
-      description: 'Social networking platform with posts, comments, likes, and real-time messaging functionality.',
-      image: './assets/freelance-projects/snaplessons.png',
-      technologies: ['React', 'Firebase', 'Material-UI', 'Cloud Functions'],
-      github: 'https://github.com/khasim-sharif/social-app',
-      live: 'https://social-app-demo.com',
-      gradient: 'from-pink-400/20 to-purple-400/20'
+      title: "Social Media App",
+      description:
+        "Social networking platform with posts, comments, likes, and real-time messaging functionality.",
+      image: "./assets/freelance-projects/snaplessons.png",
+      technologies: ["React", "Firebase", "Material-UI", "Cloud Functions"],
+      github: "https://github.com/khasim-sharif/social-app",
+      live: "https://social-app-demo.com",
+      gradient: "from-pink-400/20 to-purple-400/20",
     },
     {
-      title: 'Portfolio Website',
-      description: 'Responsive portfolio website with smooth animations, contact forms, and blog functionality.',
-      image: './assets/freelance-projects/agroskydrones.png',
-      technologies: ['React', 'GSAP', 'Tailwind CSS', 'Framer Motion'],
-      github: 'https://github.com/khasim-sharif/portfolio',
-      live: 'https://khasim-sharif.dev',
-      gradient: 'from-cyan-400/20 to-blue-400/20'
+      title: "Portfolio Website",
+      description:
+        "Responsive portfolio website with smooth animations, contact forms, and blog functionality.",
+      image: "./assets/freelance-projects/agroskydrones.png",
+      technologies: ["React", "GSAP", "Tailwind CSS", "Framer Motion"],
+      github: "https://github.com/khasim-sharif/portfolio",
+      live: "https://khasim-sharif.dev",
+      gradient: "from-cyan-400/20 to-blue-400/20",
     },
     {
-      title: 'Learning Management System',
-      description: 'Educational platform with course management, video streaming, quizzes, and progress tracking.',
-      image: './assets/freelance-projects/sridattapadukanivas.png',
-      technologies: ['Next.js', 'Prisma', 'PostgreSQL', 'Stripe'],
-      github: 'https://github.com/khasim-sharif/lms',
-      live: 'https://lms-demo.com',
-      gradient: 'from-indigo-400/20 to-purple-400/20'
-    }
+      title: "Learning Management System",
+      description:
+        "Educational platform with course management, video streaming, quizzes, and progress tracking.",
+      image: "./assets/freelance-projects/sridattapadukanivas.png",
+      technologies: ["Next.js", "Prisma", "PostgreSQL", "Stripe"],
+      github: "https://github.com/khasim-sharif/lms",
+      live: "https://lms-demo.com",
+      gradient: "from-indigo-400/20 to-purple-400/20",
+    },
   ];
 
   useEffect(() => {
-    const projectCards = projectsRef.current?.querySelectorAll('.project-card');
+    const projectCards = projectsRef.current?.querySelectorAll(".project-card");
     if (!projectCards) return;
 
     projectCards.forEach((card, index) => {
-      gsap.fromTo(card,
-        { 
+      gsap.fromTo(
+        card,
+        {
           opacity: 0,
           y: 100,
-          scale: 0.8
+          scale: 0.8,
         },
         {
           opacity: 1,
@@ -84,35 +91,56 @@ const ProjectsSection = () => {
           scale: 1,
           duration: 1,
           delay: index * 0.2,
-          ease: 'power3.out',
+          ease: "power3.out",
           scrollTrigger: {
             trigger: card,
-            start: 'top 85%',
-            toggleActions: 'play none none reverse',
-          }
+            start: "top 85%",
+            toggleActions: "play none none reverse",
+          },
         }
       );
 
       // Hover animations
-      card.addEventListener('mouseenter', () => {
-        gsap.to(card, { y: -10, duration: 0.3, ease: 'power2.out' });
+      card.addEventListener("mouseenter", () => {
+        gsap.to(card, { y: -10, duration: 0.3, ease: "power2.out" });
       });
 
-      card.addEventListener('mouseleave', () => {
-        gsap.to(card, { y: 0, duration: 0.3, ease: 'power2.out' });
+      card.addEventListener("mouseleave", () => {
+        gsap.to(card, { y: 0, duration: 0.3, ease: "power2.out" });
       });
     });
   }, []);
 
   return (
     <section className="py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden bg-white">
-      {/* Background */}
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute top-24 right-24 w-36 h-36 md:w-48 md:h-48 bg-cyan-200/20 rounded-full blur-2xl animate-float" />
-        <div className="absolute bottom-20 left-20 w-32 h-32 md:w-44 md:h-44 bg-indigo-200/20 rounded-full blur-2xl animate-float" style={{ animationDelay: '1s' }} />
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-28 h-28 md:w-40 md:h-40 bg-teal-200/20 rounded-full blur-2xl animate-float" style={{ animationDelay: '2s' }} />
+      <div className="absolute inset-0 bg-gradient-to-br from-blue-50 via-white to-pink-50">
+        <div className="absolute inset-0">
+          {/* Parallax background elements */}
+          <div
+            className="absolute top-10 left-10 w-32 h-32 sm:w-48 sm:h-48 md:w-64 md:h-64 bg-blue-200 rounded-full blur-3xl opacity-30 animate-pulse"
+            style={{ transform: `translateY(${scrollY * 0.2}px)` }}
+          ></div>
+          <div
+            className="absolute top-1/4 right-20 w-40 h-40 sm:w-56 sm:h-56 md:w-72 md:h-72 bg-pink-200 rounded-full blur-3xl opacity-25 animate-pulse delay-1000"
+            style={{ transform: `translateY(${scrollY * -0.3}px)` }}
+          ></div>
+          <div
+            className="absolute bottom-1/3 left-1/4 w-36 h-36 sm:w-52 sm:h-52 md:w-80 md:h-80 bg-purple-200 rounded-full blur-3xl opacity-20 animate-pulse delay-2000"
+            style={{ transform: `translateY(${scrollY * 0.4}px)` }}
+          ></div>
+          <div
+            className="absolute bottom-20 right-10 w-28 h-28 sm:w-44 sm:h-44 md:w-60 md:h-60 bg-blue-300 rounded-full blur-3xl opacity-30 animate-pulse delay-500"
+            style={{ transform: `translateY(${scrollY * -0.2}px)` }}
+          ></div>
+          <div
+            className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-24 h-24 sm:w-40 sm:h-40 md:w-56 md:h-56 bg-pink-300 rounded-full blur-3xl opacity-15 animate-pulse delay-1500"
+            style={{
+              transform: `translate(-50%, -50%) translateY(${scrollY * 0.1}px)`,
+            }}
+          ></div>
+        </div>
       </div>
-      
+
       <div className="max-w-7xl mx-auto relative z-10">
         <ScrollReveal>
           <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-center mb-8 sm:mb-12 lg:mb-16 bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">
@@ -120,7 +148,10 @@ const ProjectsSection = () => {
           </h2>
         </ScrollReveal>
 
-        <div ref={projectsRef} className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+        <div
+          ref={projectsRef}
+          className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8"
+        >
           {projects.map((project, index) => (
             <div key={index} className="project-card">
               <GlassCard gradient={project.gradient} className="h-full group">
@@ -132,7 +163,7 @@ const ProjectsSection = () => {
                     className="w-full h-40 sm:h-48 object-cover transition-transform duration-300 group-hover:scale-110"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                  
+
                   {/* Overlay Links */}
                   <div className="absolute inset-0 flex items-center justify-center gap-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                     <a

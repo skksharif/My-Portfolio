@@ -11,11 +11,11 @@ const Navbar = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 50);
+      setScrolled(window.scrollY > 30);
     };
 
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   const links = [
@@ -28,106 +28,93 @@ const Navbar = () => {
   ];
 
   const scrollToSection = (href) => {
-    if (href === '#') {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+    if (href === "#") {
+      window.scrollTo({ top: 0, behavior: "smooth" });
       return;
     }
-    
+
     const element = document.querySelector(href);
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+      element.scrollIntoView({ behavior: "smooth" });
     }
     setMenuOpen(false);
   };
 
   return (
-    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-      scrolled 
-        ? 'bg-white/95 backdrop-blur-xl shadow-lg border-b border-gray-100' 
-        : 'bg-white/80 backdrop-blur-md'
-    }`}>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16 lg:h-20">
-          {/* Logo */}
-          <div className="flex items-center">
-            <div className="text-2xl lg:text-3xl font-bold bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent font-dancing">
-              Khasim Sharif
-            </div>
-          </div>
+    <>
+      <nav
+        className={`fixed top-4 left-1/2 transform -translate-x-1/2 z-50 
+          flex items-center justify-between px-4 py-2 
+          backdrop-blur-xl bg-white/90 shadow-lg border border-gray-200 
+          rounded-full transition-all duration-500 ${
+            scrolled ? "scale-105" : "scale-100"
+          }`}
+      >
 
-          {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center space-x-8">
-            {links.map((link) => (
-              <button
-                key={link.name}
-                onClick={() => scrollToSection(link.href)}
-                className="relative text-gray-700 hover:text-purple-600 transition-colors duration-300 font-medium text-base group"
-              >
-                {link.name}
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-purple-600 to-blue-600 transition-all duration-300 group-hover:w-full"></span>
-              </button>
-            ))}
-          </div>
 
-          {/* CTA Button - Desktop */}
-          <div className="hidden lg:flex items-center">
-            <a
-              href="./assets/mine/sharif-swdev.pdf"
-              download
-              className="px-6 py-2.5 bg-gradient-to-r from-purple-600 to-blue-600 text-white rounded-full font-semibold text-sm hover:from-purple-700 hover:to-blue-700 transition-all duration-300 hover:scale-105 hover:shadow-lg"
-            >
-              Download CV
-            </a>
-          </div>
-
-          {/* Mobile menu button */}
-          <div className="lg:hidden">
+        {/* Desktop Links */}
+        <div className="hidden lg:flex items-center space-x-6 px-4">
+          {links.map((link) => (
             <button
-              onClick={() => setMenuOpen(!menuOpen)}
-              className="p-2 rounded-lg text-gray-700 hover:text-purple-600 hover:bg-purple-50 transition-all duration-300"
+              key={link.name}
+              onClick={() => scrollToSection(link.href)}
+              className="text-gray-700 hover:text-purple-600 text-sm font-medium transition-all duration-300 relative group"
             >
-              {menuOpen ? (
-                <FaTimes className="h-6 w-6" />
-              ) : (
-                <FaBars className="h-6 w-6" />
-              )}
+              {link.name}
+              <span className="absolute left-0 -bottom-0.5 h-0.5 w-0 bg-gradient-to-r from-purple-600 to-blue-600 group-hover:w-full transition-all duration-300"></span>
             </button>
-          </div>
+          ))}
         </div>
-      </div>
 
-      {/* Mobile Navigation Menu */}
-      <div className={`lg:hidden transition-all duration-300 ease-in-out ${
-        menuOpen 
-          ? 'max-h-96 opacity-100' 
-          : 'max-h-0 opacity-0 overflow-hidden'
-      }`}>
-        <div className="bg-white/95 backdrop-blur-xl border-t border-gray-100 shadow-lg">
-          <div className="px-4 py-6 space-y-4">
-            {links.map((link) => (
-              <button
-                key={link.name}
-                onClick={() => scrollToSection(link.href)}
-                className="block w-full text-left px-4 py-3 text-gray-700 hover:text-purple-600 hover:bg-purple-50 rounded-lg transition-all duration-300 font-medium"
-              >
-                {link.name}
-              </button>
-            ))}
-            
-            {/* Mobile CTA Button */}
-            <div className="pt-4 border-t border-gray-200">
-              <a
-                href="./assets/mine/sharif-swdev.pdf"
-                download
-                className="block w-full text-center px-6 py-3 bg-gradient-to-r from-purple-600 to-blue-600 text-white rounded-lg font-semibold hover:from-purple-700 hover:to-blue-700 transition-all duration-300"
-              >
-                Download CV
-              </a>
-            </div>
-          </div>
+        {/* CTA - CV Button */}
+        <div className="hidden lg:flex">
+          <a
+            href="./assets/mine/sharif-swdev.pdf"
+            download
+            className="ml-4 px-4 py-1.5 bg-gradient-to-r from-purple-600 to-blue-600 text-white text-sm rounded-full font-semibold hover:scale-105 transition-all duration-300"
+          >
+            Download CV
+          </a>
+        </div>
+
+        {/* Mobile Menu Toggle */}
+        <div className="lg:hidden px-2">
+          <button
+            onClick={() => setMenuOpen(!menuOpen)}
+            className="p-2 text-gray-700 hover:text-purple-600 rounded-full transition-all"
+          >
+            {menuOpen ? <FaTimes className="h-5 w-5" /> : <FaBars className="h-5 w-5" />}
+          </button>
+        </div>
+      </nav>
+
+      {/* Mobile Menu */}
+      <div
+        className={`lg:hidden fixed top-16 left-1/2 transform -translate-x-1/2 z-40 w-[85%] max-w-md transition-all duration-300 ease-in-out ${
+          menuOpen ? "opacity-100 max-h-[500px]" : "opacity-0 max-h-0 overflow-hidden"
+        }`}
+      >
+        <div className="bg-white/95 backdrop-blur-xl shadow-xl rounded-xl border border-gray-200 px-6 py-4 space-y-3">
+          {links.map((link) => (
+            <button
+              key={link.name}
+              onClick={() => scrollToSection(link.href)}
+              className="block w-full text-left text-gray-700 hover:text-purple-600 py-2 font-medium"
+            >
+              {link.name}
+            </button>
+          ))}
+
+          <a
+            href="./assets/mine/sharif-swdev.pdf"
+            download
+            className="block w-full text-center mt-4 px-4 py-2 bg-gradient-to-r from-purple-600 to-blue-600 text-white rounded-full font-semibold hover:scale-105 transition-all duration-300"
+          >
+            Download CV
+          </a>
         </div>
       </div>
-    </nav>
+    </>
   );
 };
 
