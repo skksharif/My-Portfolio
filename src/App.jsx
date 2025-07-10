@@ -10,15 +10,25 @@ import Navbar from './components/Navbar';
 
 function App() {
   return (
-    <div className="relative">
+    <div className="relative" id="home">
       <Navbar />
       <ThemeToggle />
       <HeroSection />
-      <AboutSection />
-      <SkillsSection />
-      <ExperienceSection />
-      <ProjectsSection />
-      <ContactSection />
+      <div id="about">
+        <AboutSection />
+      </div>
+      <div id="skills">
+        <SkillsSection />
+      </div>
+      <div id="experience">
+        <ExperienceSection />
+      </div>
+      <div id="projects">
+        <ProjectsSection />
+      </div>
+      <div id="contact">
+        <ContactSection />
+      </div>
       <Footer />
     </div>
   );
