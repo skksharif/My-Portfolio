@@ -105,18 +105,22 @@ const ProjectsSection = () => {
   }, []);
 
   return (
-    <section className="py-20 px-4 relative overflow-hidden">
+    <section className="py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden bg-white">
       {/* Background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-gray-50 to-purple-50/30" />
+      <div className="absolute inset-0 overflow-hidden">
+        <div className="absolute top-24 right-24 w-36 h-36 md:w-48 md:h-48 bg-cyan-200/20 rounded-full blur-2xl animate-float" />
+        <div className="absolute bottom-20 left-20 w-32 h-32 md:w-44 md:h-44 bg-indigo-200/20 rounded-full blur-2xl animate-float" style={{ animationDelay: '1s' }} />
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-28 h-28 md:w-40 md:h-40 bg-teal-200/20 rounded-full blur-2xl animate-float" style={{ animationDelay: '2s' }} />
+      </div>
       
       <div className="max-w-7xl mx-auto relative z-10">
         <ScrollReveal>
-          <h2 className="text-5xl font-bold text-center mb-16 bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-center mb-8 sm:mb-12 lg:mb-16 bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">
             Featured Projects
           </h2>
         </ScrollReveal>
 
-        <div ref={projectsRef} className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div ref={projectsRef} className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
           {projects.map((project, index) => (
             <div key={index} className="project-card">
               <GlassCard gradient={project.gradient} className="h-full group">
@@ -125,7 +129,7 @@ const ProjectsSection = () => {
                   <img
                     src={project.image}
                     alt={project.title}
-                    className="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-110"
+                    className="w-full h-40 sm:h-48 object-cover transition-transform duration-300 group-hover:scale-110"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                   
@@ -135,39 +139,39 @@ const ProjectsSection = () => {
                       href={project.github}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="p-3 bg-white/90 rounded-full text-gray-800 hover:bg-white transition-colors duration-200"
+                      className="p-2 sm:p-3 bg-white/90 rounded-full text-gray-800 hover:bg-white transition-colors duration-200"
                     >
-                      <FaGithub className="text-xl" />
+                      <FaGithub className="text-lg sm:text-xl" />
                     </a>
                     <a
                       href={project.live}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="p-3 bg-white/90 rounded-full text-gray-800 hover:bg-white transition-colors duration-200"
+                      className="p-2 sm:p-3 bg-white/90 rounded-full text-gray-800 hover:bg-white transition-colors duration-200"
                     >
-                      <FaExternalLinkAlt className="text-xl" />
+                      <FaExternalLinkAlt className="text-lg sm:text-xl" />
                     </a>
                   </div>
                 </div>
 
                 {/* Project Info */}
-                <div className="flex items-center gap-2 mb-3">
+                <div className="flex items-center gap-2 mb-2 sm:mb-3">
                   <FaCode className="text-purple-600" />
-                  <h3 className="text-xl font-bold text-gray-800">
+                  <h3 className="text-lg sm:text-xl font-bold text-gray-800 font-dancing">
                     {project.title}
                   </h3>
                 </div>
 
-                <p className="text-gray-600 mb-4 leading-relaxed">
+                <p className="text-sm sm:text-base text-gray-600 mb-3 sm:mb-4 leading-relaxed">
                   {project.description}
                 </p>
 
                 {/* Technologies */}
-                <div className="flex flex-wrap gap-2 mb-6">
+                <div className="flex flex-wrap gap-1 sm:gap-2 mb-4 sm:mb-6">
                   {project.technologies.map((tech, techIndex) => (
                     <span
                       key={techIndex}
-                      className="px-3 py-1 bg-purple-100 text-purple-700 rounded-full text-sm font-medium"
+                      className="px-2 sm:px-3 py-1 bg-purple-100 text-purple-700 rounded-full text-xs sm:text-sm font-medium"
                     >
                       {tech}
                     </span>
@@ -175,12 +179,12 @@ const ProjectsSection = () => {
                 </div>
 
                 {/* Action Buttons */}
-                <div className="flex gap-3 mt-auto">
+                <div className="flex gap-2 sm:gap-3 mt-auto">
                   <a
                     href={project.github}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex-1 flex items-center justify-center gap-2 px-4 py-2 bg-gray-800 text-white rounded-lg hover:bg-gray-700 transition-colors duration-200"
+                    className="flex-1 flex items-center justify-center gap-1 sm:gap-2 px-3 sm:px-4 py-2 bg-gray-800 text-white rounded-lg hover:bg-gray-700 transition-colors duration-200 text-sm sm:text-base"
                   >
                     <FaGithub />
                     Code
@@ -189,7 +193,7 @@ const ProjectsSection = () => {
                     href={project.live}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex-1 flex items-center justify-center gap-2 px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors duration-200"
+                    className="flex-1 flex items-center justify-center gap-1 sm:gap-2 px-3 sm:px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors duration-200 text-sm sm:text-base"
                   >
                     <FaExternalLinkAlt />
                     Live

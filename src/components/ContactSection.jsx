@@ -48,26 +48,30 @@ const ContactSection = () => {
   ];
 
   return (
-    <section className="py-20 px-4 relative overflow-hidden">
+    <section className="py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden bg-white">
       {/* Background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-purple-900/10 to-blue-900/10" />
+      <div className="absolute inset-0 overflow-hidden">
+        <div className="absolute top-16 left-12 w-32 h-32 md:w-44 md:h-44 bg-emerald-200/20 rounded-full blur-2xl animate-float" />
+        <div className="absolute bottom-24 right-20 w-28 h-28 md:w-40 md:h-40 bg-rose-200/20 rounded-full blur-2xl animate-float" style={{ animationDelay: '1s' }} />
+        <div className="absolute top-1/3 left-1/3 w-24 h-24 md:w-36 md:h-36 bg-amber-200/20 rounded-full blur-2xl animate-float" style={{ animationDelay: '2s' }} />
+      </div>
       
-      <div className="max-w-6xl mx-auto relative z-10">
+      <div className="max-w-7xl mx-auto relative z-10">
         <ScrollReveal>
-          <h2 className="text-5xl font-bold text-center mb-16 bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-center mb-8 sm:mb-12 lg:mb-16 bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">
             Get In Touch
           </h2>
         </ScrollReveal>
 
-        <div className="grid lg:grid-cols-2 gap-12">
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12">
           {/* Contact Info */}
           <ScrollReveal direction="left">
-            <div className="space-y-8">
+            <div className="space-y-6 lg:space-y-8">
               <div>
-                <h3 className="text-3xl font-bold text-gray-800 mb-6">
+                <h3 className="text-2xl sm:text-3xl font-bold text-gray-800 mb-4 sm:mb-6 font-dancing">
                   Let's Work Together
                 </h3>
-                <p className="text-lg text-gray-600 leading-relaxed mb-8">
+                <p className="text-base sm:text-lg text-gray-600 leading-relaxed mb-6 sm:mb-8">
                   I'm always interested in new opportunities and exciting projects. 
                   Whether you have a question or just want to say hi, I'll try my 
                   best to get back to you!
@@ -81,15 +85,15 @@ const ContactSection = () => {
                   className="flex items-center gap-4 hover:scale-105 transition-transform duration-300"
                 >
                   <div className="p-4 bg-gradient-to-r from-purple-500 to-blue-500 rounded-full text-white">
-                    <info.icon className="text-xl" />
+                    <info.icon className="text-lg sm:text-xl" />
                   </div>
                   <div>
-                    <h4 className="font-semibold text-gray-800 mb-1">
+                    <h4 className="text-sm sm:text-base font-semibold text-gray-800 mb-1">
                       {info.title}
                     </h4>
                     <a
                       href={info.link}
-                      className="text-gray-600 hover:text-purple-600 transition-colors duration-200"
+                      className="text-sm sm:text-base text-gray-600 hover:text-purple-600 transition-colors duration-200"
                     >
                       {info.value}
                     </a>
@@ -103,9 +107,9 @@ const ContactSection = () => {
           <ScrollReveal direction="right">
             <GlassCard gradient="from-blue-400/20 to-purple-400/20">
               <form onSubmit={handleSubmit} className="space-y-6">
-                <div className="grid md:grid-cols-2 gap-6">
+                <div className="grid sm:grid-cols-2 gap-4 sm:gap-6">
                   <div>
-                    <label className="block text-gray-700 font-medium mb-2">
+                    <label className="block text-sm sm:text-base text-gray-700 font-medium mb-2">
                       Name
                     </label>
                     <input
@@ -114,12 +118,12 @@ const ContactSection = () => {
                       value={formData.name}
                       onChange={handleChange}
                       required
-                      className="w-full px-4 py-3 bg-white/50 border border-white/30 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-200"
+                      className="w-full px-3 sm:px-4 py-2 sm:py-3 text-sm sm:text-base bg-white/50 border border-white/30 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-200"
                       placeholder="Your Name"
                     />
                   </div>
                   <div>
-                    <label className="block text-gray-700 font-medium mb-2">
+                    <label className="block text-sm sm:text-base text-gray-700 font-medium mb-2">
                       Email
                     </label>
                     <input
@@ -128,14 +132,14 @@ const ContactSection = () => {
                       value={formData.email}
                       onChange={handleChange}
                       required
-                      className="w-full px-4 py-3 bg-white/50 border border-white/30 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-200"
+                      className="w-full px-3 sm:px-4 py-2 sm:py-3 text-sm sm:text-base bg-white/50 border border-white/30 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-200"
                       placeholder="your.email@example.com"
                     />
                   </div>
                 </div>
 
                 <div>
-                  <label className="block text-gray-700 font-medium mb-2">
+                  <label className="block text-sm sm:text-base text-gray-700 font-medium mb-2">
                     Subject
                   </label>
                   <input
@@ -144,13 +148,13 @@ const ContactSection = () => {
                     value={formData.subject}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 bg-white/50 border border-white/30 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-200"
+                    className="w-full px-3 sm:px-4 py-2 sm:py-3 text-sm sm:text-base bg-white/50 border border-white/30 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-200"
                     placeholder="Project Inquiry"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-gray-700 font-medium mb-2">
+                  <label className="block text-sm sm:text-base text-gray-700 font-medium mb-2">
                     Message
                   </label>
                   <textarea
@@ -158,15 +162,15 @@ const ContactSection = () => {
                     value={formData.message}
                     onChange={handleChange}
                     required
-                    rows={6}
-                    className="w-full px-4 py-3 bg-white/50 border border-white/30 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-200 resize-none"
+                    rows={4}
+                    className="w-full px-3 sm:px-4 py-2 sm:py-3 text-sm sm:text-base bg-white/50 border border-white/30 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all duration-200 resize-none"
                     placeholder="Tell me about your project..."
                   />
                 </div>
 
                 <button
                   type="submit"
-                  className="w-full flex items-center justify-center gap-3 px-8 py-4 bg-gradient-to-r from-purple-600 to-blue-600 text-white rounded-lg font-semibold hover:from-purple-700 hover:to-blue-700 transition-all duration-300 hover:scale-105 hover:shadow-xl"
+                  className="w-full flex items-center justify-center gap-2 sm:gap-3 px-6 sm:px-8 py-3 sm:py-4 text-sm sm:text-base bg-gradient-to-r from-purple-600 to-blue-600 text-white rounded-lg font-semibold hover:from-purple-700 hover:to-blue-700 transition-all duration-300 hover:scale-105 hover:shadow-xl"
                 >
                   <FaPaperPlane />
                   Send Message

@@ -102,66 +102,70 @@ const ExperienceSection = () => {
   }, []);
 
   return (
-    <section className="py-20 px-4 relative overflow-hidden">
+    <section className="py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden bg-white">
       {/* Background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-purple-50/50 to-pink-50/50" />
+      <div className="absolute inset-0 overflow-hidden">
+        <div className="absolute top-20 left-20 w-32 h-32 md:w-44 md:h-44 bg-orange-200/20 rounded-full blur-2xl animate-float" />
+        <div className="absolute bottom-32 right-16 w-28 h-28 md:w-40 md:h-40 bg-red-200/20 rounded-full blur-2xl animate-float" style={{ animationDelay: '1s' }} />
+        <div className="absolute top-1/2 left-1/4 w-24 h-24 md:w-36 md:h-36 bg-yellow-200/20 rounded-full blur-2xl animate-float" style={{ animationDelay: '2s' }} />
+      </div>
       
-      <div className="max-w-6xl mx-auto relative z-10">
+      <div className="max-w-7xl mx-auto relative z-10">
         <ScrollReveal>
-          <h2 className="text-5xl font-bold text-center mb-16 bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-center mb-8 sm:mb-12 lg:mb-16 bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">
             Experience & Education
           </h2>
         </ScrollReveal>
 
         <div ref={timelineRef} className="relative">
           {/* Timeline Line */}
-          <div className="absolute left-1/2 transform -translate-x-1/2 w-1 bg-gray-200 h-full">
+          <div className="absolute left-1/2 transform -translate-x-1/2 w-0.5 sm:w-1 bg-gray-200 h-full hidden md:block">
             <div className="timeline-line w-full bg-gradient-to-b from-purple-500 to-blue-500 rounded-full" />
           </div>
 
           {experiences.map((exp, index) => (
             <div 
               key={index}
-              className={`timeline-item relative flex items-center mb-16 ${
-                index % 2 === 0 ? 'flex-row' : 'flex-row-reverse'
+              className={`timeline-item relative flex items-center mb-8 sm:mb-12 lg:mb-16 ${
+                index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'
               }`}
             >
               {/* Timeline Dot */}
-              <div className="absolute left-1/2 transform -translate-x-1/2 w-6 h-6 bg-gradient-to-r from-purple-500 to-blue-500 rounded-full border-4 border-white shadow-lg z-10" />
+              <div className="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 sm:w-6 sm:h-6 bg-gradient-to-r from-purple-500 to-blue-500 rounded-full border-2 sm:border-4 border-white shadow-lg z-10 hidden md:block" />
               
               {/* Content */}
-              <div className={`w-5/12 ${index % 2 === 0 ? 'pr-8' : 'pl-8'}`}>
+              <div className={`w-full md:w-5/12 ${index % 2 === 0 ? 'md:pr-8' : 'md:pl-8'}`}>
                 <GlassCard gradient={exp.gradient}>
-                  <div className="flex items-center gap-3 mb-4">
-                    <FaBriefcase className="text-purple-600 text-xl" />
-                    <span className="px-3 py-1 bg-purple-100 text-purple-700 rounded-full text-sm font-medium">
+                  <div className="flex items-center gap-2 sm:gap-3 mb-3 sm:mb-4">
+                    <FaBriefcase className="text-purple-600 text-lg sm:text-xl" />
+                    <span className="px-2 sm:px-3 py-1 bg-purple-100 text-purple-700 rounded-full text-xs sm:text-sm font-medium">
                       {exp.type}
                     </span>
                   </div>
                   
-                  <h3 className="text-2xl font-bold text-gray-800 mb-2">
+                  <h3 className="text-lg sm:text-xl lg:text-2xl font-bold text-gray-800 mb-2 font-dancing">
                     {exp.title}
                   </h3>
                   
-                  <h4 className="text-lg font-semibold text-purple-600 mb-3">
+                  <h4 className="text-base sm:text-lg font-semibold text-purple-600 mb-2 sm:mb-3">
                     {exp.company}
                   </h4>
                   
-                  <div className="flex items-center gap-4 text-gray-600 mb-4">
+                  <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 text-gray-600 mb-3 sm:mb-4">
                     <div className="flex items-center gap-2">
-                      <FaCalendarAlt className="text-sm" />
-                      <span className="text-sm">{exp.period}</span>
+                      <FaCalendarAlt className="text-xs sm:text-sm" />
+                      <span className="text-xs sm:text-sm">{exp.period}</span>
                     </div>
                     <div className="flex items-center gap-2">
-                      <FaMapMarkerAlt className="text-sm" />
-                      <span className="text-sm">{exp.location}</span>
+                      <FaMapMarkerAlt className="text-xs sm:text-sm" />
+                      <span className="text-xs sm:text-sm">{exp.location}</span>
                     </div>
                   </div>
                   
-                  <ul className="space-y-2">
+                  <ul className="space-y-1 sm:space-y-2">
                     {exp.description.map((item, i) => (
-                      <li key={i} className="text-gray-600 flex items-start gap-2">
-                        <span className="w-2 h-2 bg-purple-400 rounded-full mt-2 flex-shrink-0" />
+                      <li key={i} className="text-sm sm:text-base text-gray-600 flex items-start gap-2">
+                        <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-purple-400 rounded-full mt-1.5 sm:mt-2 flex-shrink-0" />
                         {item}
                       </li>
                     ))}
