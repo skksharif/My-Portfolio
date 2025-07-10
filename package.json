@@ -18,7 +18,7 @@
     "aos": "^2.3.4",
     "dotenv": "^16.4.7",
     "font-awesome": "^4.7.0",
-    "framer-motion": "^12.6.3",
+    "framer-motion": "^12.23.2",
     "gsap": "^3.13.0",
     "matter-js": "^0.20.0",
     "meshline": "^3.3.1",
