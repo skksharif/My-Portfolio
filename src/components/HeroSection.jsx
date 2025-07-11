@@ -101,10 +101,3 @@ const HeroSection = () => {
 };
 
 export default HeroSection;
-        </div>
-      </div>
-    </section>
-  );
-};
-
-export default HeroSection;
