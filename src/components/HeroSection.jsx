@@ -2,7 +2,12 @@ import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import TypewriterText from "./TypewriterText";
-import { FaGithub, FaLinkedin, FaDownload, FaChevronDown } from "react-icons/fa";
+import {
+  FaGithub,
+  FaLinkedin,
+  FaDownload,
+  FaChevronDown,
+} from "react-icons/fa";
 import { SiLeetcode } from "react-icons/si";
 import ParallaxBackground from "./ParallaxBackground";
 import MaskEffect from "./MaskEffect";
@@ -54,8 +59,8 @@ const HeroSection = () => {
         trigger: heroRef.current,
         start: "top top",
         end: "bottom top",
-        scrub: 1
-      }
+        scrub: 1,
+      },
     });
 
     // Hide scroll indicator on scroll
@@ -66,53 +71,51 @@ const HeroSection = () => {
         trigger: heroRef.current,
         start: "top top",
         end: "top -100",
-        scrub: true
-      }
+        scrub: true,
+      },
     });
   }, []);
 
   const scrollToNext = () => {
-    const aboutSection = document.querySelector('#about');
+    const aboutSection = document.querySelector("#about");
     if (aboutSection) {
-      aboutSection.scrollIntoView({ behavior: 'smooth' });
+      aboutSection.scrollIntoView({ behavior: "smooth" });
     }
   };
 
   return (
-    <section ref={heroRef} className="relative min-h-screen flex items-center justify-center overflow-hidden bg-white">
+    <section
+      ref={heroRef}
+      className="relative min-h-screen flex items-center justify-center overflow-hidden bg-white"
+    >
       <ParallaxBackground className="absolute inset-0 bg-gradient-to-br from-blue-50 via-white to-pink-50" />
-      
+
       <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center min-h-screen py-20 lg:py-0">
           {/* Content Section */}
-          <div ref={contentRef} className="text-center lg:text-left order-2 lg:order-1">
+          <div
+            ref={contentRef}
+            className="text-center lg:text-left order-2 lg:order-1"
+          >
             <MaskEffect maskType="slide">
               <div className="space-y-4 sm:space-y-6">
-                {/* Greeting */}
-                <div className="text-sm sm:text-base md:text-lg text-purple-600 font-medium tracking-wide uppercase">
-                  Hello, I'm
-                </div>
-
                 {/* Name */}
-                <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight">
-                  <span className="bg-gradient-to-r from-purple-600 via-pink-500 to-blue-600 bg-clip-text text-transparent font-dancing">
+                <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-6xl font-bold leading-tight">
+                  <span className="bg-gradient-to-r from-purple-600 via-pink-500 to-yellow-600 bg-clip-text text-transparent font-dancing">
                     Khasim Sharif
                   </span>
                 </h1>
 
                 {/* Title with Typewriter */}
-                <div className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-gray-700 font-light min-h-[2em]">
-                  <TypewriterText 
-                    text="Full-Stack Developer & Tech Enthusiast"
-                    speed={80}
-                    delay={1000}
-                  />
+                <div className="text-lg sm:text-xl md:text-1xl lg:text-xl text-gray-700 font-light">
+                  Full-Stack Developer & Tech Enthusiast
                 </div>
 
                 {/* Description */}
-                <p className="text-sm sm:text-base md:text-lg text-gray-600 leading-relaxed max-w-2xl mx-auto lg:mx-0">
-                  Passionate about creating innovative web solutions with modern technologies. 
-                  I bring ideas to life through clean, efficient code and exceptional user experiences.
+                <p className="text-sm sm:text-base md:text-lg text-gray-600 leading-relaxed max-w-xl mx-auto lg:mx-0">
+                  Passionate about creating innovative web solutions with modern
+                  technologies. I bring ideas to life through clean, efficient
+                  code and exceptional user experiences.
                 </p>
 
                 {/* CTA Buttons */}
@@ -140,19 +143,19 @@ const HeroSection = () => {
                       icon: FaGithub,
                       href: "https://github.com/khasim-sharif",
                       color: "hover:text-gray-800",
-                      label: "GitHub"
+                      label: "GitHub",
                     },
                     {
                       icon: SiLeetcode,
                       href: "https://leetcode.com/khasim-sharif",
                       color: "hover:text-orange-500",
-                      label: "LeetCode"
+                      label: "LeetCode",
                     },
                     {
                       icon: FaLinkedin,
                       href: "https://linkedin.com/in/khasim-sharif",
                       color: "hover:text-blue-600",
-                      label: "LinkedIn"
+                      label: "LinkedIn",
                     },
                   ].map(({ icon: Icon, href, color, label }, index) => (
                     <a
@@ -175,22 +178,22 @@ const HeroSection = () => {
           <div className="flex justify-center lg:justify-end order-1 lg:order-2">
             <MaskEffect maskType="circle">
               <div ref={imageRef} className="relative">
-                <div className="w-64 h-64 sm:w-80 sm:h-80 md:w-96 md:h-96 lg:w-[400px] lg:h-[400px] xl:w-[500px] xl:h-[500px] relative">
+                <div className="w-64 h-64 sm:w-80 sm:h-80 md:w-96 md:h-96 lg:w-[300px] lg:h-[300px] xl:w-[400px] xl:h-[400px] relative">
                   {/* Animated Background */}
-                  <div className="absolute inset-0 bg-gradient-to-r from-purple-400 to-blue-400 rounded-full animate-pulse opacity-20"></div>
-                  <div className="absolute inset-2 bg-gradient-to-r from-pink-400 to-purple-400 rounded-full animate-pulse opacity-30 animation-delay-1000"></div>
-                  
+                  <div className="absolute inset-0 bg-gradient-to-r from-yellow-400 to-blue-400 rounded-full animate-pulse opacity-20"></div>
+                  <div className="absolute inset-2 bg-gradient-to-r from-yellow-400 to-yellow-400 rounded-full animate-pulse opacity-30 animation-delay-1000"></div>
+
                   {/* Profile Image */}
                   <img
                     src="./assets/mine/sharif-nobg.png"
                     alt="Khasim Sharif"
-                    className="w-full h-full object-cover rounded-full border-4 border-white shadow-2xl relative z-10 hover:scale-105 transition-transform duration-500"
+                    className="w-full h-full object-contain rounded-full border-4 border-white shadow-2xl relative z-10 hover:scale-105 transition-transform duration-500"
                   />
-                  
+
                   {/* Floating Elements */}
-                  <div className="absolute -top-4 -right-4 w-8 h-8 bg-purple-500 rounded-full animate-bounce opacity-80"></div>
-                  <div className="absolute -bottom-4 -left-4 w-6 h-6 bg-blue-500 rounded-full animate-bounce animation-delay-500 opacity-80"></div>
-                  <div className="absolute top-1/4 -left-8 w-4 h-4 bg-pink-500 rounded-full animate-bounce animation-delay-1000 opacity-80"></div>
+                  <div className="absolute -top-4 -right-4 w-8 h-8 bg-yellow-500 rounded-full animate-bounce opacity-80"></div>
+                  <div className="absolute -bottom-4 -left-4 w-6 h-6 bg-pink-500 rounded-full animate-bounce animation-delay-500 opacity-80"></div>
+                  <div className="absolute top-1/4 -left-8 w-4 h-4 bg-blue-500 rounded-full animate-bounce animation-delay-1000 opacity-80"></div>
                 </div>
               </div>
             </MaskEffect>
@@ -199,7 +202,7 @@ const HeroSection = () => {
       </div>
 
       {/* Scroll Indicator */}
-      <div 
+      <div
         ref={scrollIndicatorRef}
         className="absolute bottom-8 left-1/2 transform -translate-x-1/2 cursor-pointer"
         onClick={scrollToNext}

@@ -72,12 +72,7 @@ const Navbar = () => {
           } border border-gray-200/50 rounded-full px-4 sm:px-6 py-2 sm:py-3`}
       >
         <div className="flex items-center justify-between">
-          {/* Logo */}
-          <div className="hidden lg:block">
-            <span className="text-lg font-bold bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent font-dancing">
-              KS
-            </span>
-          </div>
+      
 
           {/* Desktop Links */}
           <div className="hidden lg:flex items-center space-x-1">
@@ -85,11 +80,7 @@ const Navbar = () => {
               <button
                 key={link.name}
                 onClick={() => scrollToSection(link.href, link.id)}
-                className={`px-4 py-2 text-sm font-medium rounded-full transition-all duration-300 relative group ${
-                  activeSection === link.id
-                    ? "text-white bg-gradient-to-r from-purple-600 to-blue-600 shadow-lg"
-                    : "text-gray-700 hover:text-purple-600 hover:bg-purple-50"
-                }`}
+                className={`px-4 py-2 text-sm font-medium rounded-full transition-all duration-300 relative group`}
               >
                 {link.name}
                 {activeSection !== link.id && (
