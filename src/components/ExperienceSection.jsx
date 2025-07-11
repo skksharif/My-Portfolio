@@ -3,6 +3,8 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import ScrollReveal from './ScrollReveal';
 import GlassCard from './GlassCard';
+import ParallaxBackground from './ParallaxBackground';
+import MaskEffect from './MaskEffect';
 import { FaBriefcase, FaCalendarAlt, FaMapMarkerAlt } from 'react-icons/fa';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -41,7 +43,7 @@ const ExperienceSection = () => {
     },
     {
       title: 'Computer Science Student',
-      company: 'Malla Reddy College of Engineering',
+      company: 'Lakireddy Bali Reddy College of Engineering',
       location: 'Hyderabad, India',
       period: '2021 - 2025',
       type: 'Education',
@@ -103,18 +105,15 @@ const ExperienceSection = () => {
 
   return (
     <section className="py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden bg-white">
-      {/* Background */}
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute top-20 left-20 w-32 h-32 md:w-44 md:h-44 bg-orange-200/20 rounded-full blur-2xl animate-float" />
-        <div className="absolute bottom-32 right-16 w-28 h-28 md:w-40 md:h-40 bg-red-200/20 rounded-full blur-2xl animate-float" style={{ animationDelay: '1s' }} />
-        <div className="absolute top-1/2 left-1/4 w-24 h-24 md:w-36 md:h-36 bg-yellow-200/20 rounded-full blur-2xl animate-float" style={{ animationDelay: '2s' }} />
-      </div>
+      <ParallaxBackground className="absolute inset-0 bg-gradient-to-br from-blue-50 via-white to-pink-50" />
       
       <div className="max-w-7xl mx-auto relative z-10">
         <ScrollReveal>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-center mb-8 sm:mb-12 lg:mb-16 bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">
-            Experience & Education
-          </h2>
+          <MaskEffect>
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-center mb-6 sm:mb-8 lg:mb-12 bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">
+              Experience & Education
+            </h2>
+          </MaskEffect>
         </ScrollReveal>
 
         <div ref={timelineRef} className="relative">
@@ -135,42 +134,44 @@ const ExperienceSection = () => {
               
               {/* Content */}
               <div className={`w-full md:w-5/12 ${index % 2 === 0 ? 'md:pr-8' : 'md:pl-8'}`}>
-                <GlassCard gradient={exp.gradient}>
-                  <div className="flex items-center gap-2 sm:gap-3 mb-3 sm:mb-4">
-                    <FaBriefcase className="text-purple-600 text-lg sm:text-xl" />
-                    <span className="px-2 sm:px-3 py-1 bg-purple-100 text-purple-700 rounded-full text-xs sm:text-sm font-medium">
-                      {exp.type}
-                    </span>
-                  </div>
-                  
-                  <h3 className="text-lg sm:text-xl lg:text-2xl font-bold text-gray-800 mb-2 font-dancing">
-                    {exp.title}
-                  </h3>
-                  
-                  <h4 className="text-base sm:text-lg font-semibold text-purple-600 mb-2 sm:mb-3">
-                    {exp.company}
-                  </h4>
-                  
-                  <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 text-gray-600 mb-3 sm:mb-4">
-                    <div className="flex items-center gap-2">
-                      <FaCalendarAlt className="text-xs sm:text-sm" />
-                      <span className="text-xs sm:text-sm">{exp.period}</span>
+                <MaskEffect maskType="slide">
+                  <GlassCard gradient={exp.gradient}>
+                    <div className="flex items-center gap-2 mb-2 sm:mb-3">
+                      <FaBriefcase className="text-purple-600 text-base sm:text-lg" />
+                      <span className="px-2 py-1 bg-purple-100 text-purple-700 rounded-full text-xs font-medium">
+                        {exp.type}
+                      </span>
                     </div>
-                    <div className="flex items-center gap-2">
-                      <FaMapMarkerAlt className="text-xs sm:text-sm" />
-                      <span className="text-xs sm:text-sm">{exp.location}</span>
+                    
+                    <h3 className="text-base sm:text-lg font-bold text-gray-800 mb-1 sm:mb-2 font-dancing">
+                      {exp.title}
+                    </h3>
+                    
+                    <h4 className="text-sm sm:text-base font-semibold text-purple-600 mb-2">
+                      {exp.company}
+                    </h4>
+                    
+                    <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-3 text-gray-600 mb-2 sm:mb-3">
+                      <div className="flex items-center gap-1">
+                        <FaCalendarAlt className="text-xs" />
+                        <span className="text-xs">{exp.period}</span>
+                      </div>
+                      <div className="flex items-center gap-1">
+                        <FaMapMarkerAlt className="text-xs" />
+                        <span className="text-xs">{exp.location}</span>
+                      </div>
                     </div>
-                  </div>
-                  
-                  <ul className="space-y-1 sm:space-y-2">
-                    {exp.description.map((item, i) => (
-                      <li key={i} className="text-sm sm:text-base text-gray-600 flex items-start gap-2">
-                        <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-purple-400 rounded-full mt-1.5 sm:mt-2 flex-shrink-0" />
-                        {item}
-                      </li>
-                    ))}
-                  </ul>
-                </GlassCard>
+                    
+                    <ul className="space-y-1">
+                      {exp.description.map((item, i) => (
+                        <li key={i} className="text-xs sm:text-sm text-gray-600 flex items-start gap-2">
+                          <span className="w-1 h-1 sm:w-1.5 sm:h-1.5 bg-purple-400 rounded-full mt-1.5 flex-shrink-0" />
+                          {item}
+                        </li>
+                      ))}
+                    </ul>
+                  </GlassCard>
+                </MaskEffect>
               </div>
             </div>
           ))}

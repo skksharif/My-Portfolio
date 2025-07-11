@@ -3,6 +3,8 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import ScrollReveal from "./ScrollReveal";
 import GlassCard from "./GlassCard";
+import ParallaxBackground from "./ParallaxBackground";
+import MaskEffect from "./MaskEffect";
 import { FaGithub, FaExternalLinkAlt, FaCode } from "react-icons/fa";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -113,39 +115,15 @@ const ProjectsSection = () => {
 
   return (
     <section className="py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden bg-white">
-      <div className="absolute inset-0 bg-gradient-to-br from-blue-50 via-white to-pink-50">
-        <div className="absolute inset-0">
-          {/* Parallax background elements */}
-          <div
-            className="absolute top-10 left-10 w-32 h-32 sm:w-48 sm:h-48 md:w-64 md:h-64 bg-blue-200 rounded-full blur-3xl opacity-30 animate-pulse"
-            style={{ transform: `translateY(${scrollY * 0.2}px)` }}
-          ></div>
-          <div
-            className="absolute top-1/4 right-20 w-40 h-40 sm:w-56 sm:h-56 md:w-72 md:h-72 bg-pink-200 rounded-full blur-3xl opacity-25 animate-pulse delay-1000"
-            style={{ transform: `translateY(${scrollY * -0.3}px)` }}
-          ></div>
-          <div
-            className="absolute bottom-1/3 left-1/4 w-36 h-36 sm:w-52 sm:h-52 md:w-80 md:h-80 bg-purple-200 rounded-full blur-3xl opacity-20 animate-pulse delay-2000"
-            style={{ transform: `translateY(${scrollY * 0.4}px)` }}
-          ></div>
-          <div
-            className="absolute bottom-20 right-10 w-28 h-28 sm:w-44 sm:h-44 md:w-60 md:h-60 bg-blue-300 rounded-full blur-3xl opacity-30 animate-pulse delay-500"
-            style={{ transform: `translateY(${scrollY * -0.2}px)` }}
-          ></div>
-          <div
-            className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-24 h-24 sm:w-40 sm:h-40 md:w-56 md:h-56 bg-pink-300 rounded-full blur-3xl opacity-15 animate-pulse delay-1500"
-            style={{
-              transform: `translate(-50%, -50%) translateY(${scrollY * 0.1}px)`,
-            }}
-          ></div>
-        </div>
-      </div>
+      <ParallaxBackground className="absolute inset-0 bg-gradient-to-br from-blue-50 via-white to-pink-50" />
 
       <div className="max-w-7xl mx-auto relative z-10">
         <ScrollReveal>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-center mb-8 sm:mb-12 lg:mb-16 bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">
-            Featured Projects
-          </h2>
+          <MaskEffect>
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-center mb-6 sm:mb-8 lg:mb-12 bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">
+              Featured Projects
+            </h2>
+          </MaskEffect>
         </ScrollReveal>
 
         <div
@@ -154,83 +132,85 @@ const ProjectsSection = () => {
         >
           {projects.map((project, index) => (
             <div key={index} className="project-card">
-              <GlassCard gradient={project.gradient} className="h-full group">
-                {/* Project Image */}
-                <div className="relative overflow-hidden rounded-xl mb-6">
-                  <img
-                    src={project.image}
-                    alt={project.title}
-                    className="w-full h-40 sm:h-48 object-cover transition-transform duration-300 group-hover:scale-110"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              <MaskEffect maskType="slide">
+                <GlassCard gradient={project.gradient} className="h-full group">
+                  {/* Project Image */}
+                  <div className="relative overflow-hidden rounded-lg mb-4">
+                    <img
+                      src={project.image}
+                      alt={project.title}
+                      className="w-full h-32 sm:h-40 object-cover transition-transform duration-300 group-hover:scale-110"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
-                  {/* Overlay Links */}
-                  <div className="absolute inset-0 flex items-center justify-center gap-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    {/* Overlay Links */}
+                    <div className="absolute inset-0 flex items-center justify-center gap-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                      <a
+                        href={project.github}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="p-2 bg-white/90 rounded-full text-gray-800 hover:bg-white transition-colors duration-200"
+                      >
+                        <FaGithub className="text-base" />
+                      </a>
+                      <a
+                        href={project.live}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="p-2 bg-white/90 rounded-full text-gray-800 hover:bg-white transition-colors duration-200"
+                      >
+                        <FaExternalLinkAlt className="text-base" />
+                      </a>
+                    </div>
+                  </div>
+
+                  {/* Project Info */}
+                  <div className="flex items-center gap-2 mb-2">
+                    <FaCode className="text-purple-600 text-sm" />
+                    <h3 className="text-base sm:text-lg font-bold text-gray-800 font-dancing">
+                      {project.title}
+                    </h3>
+                  </div>
+
+                  <p className="text-xs sm:text-sm text-gray-600 mb-3 leading-relaxed">
+                    {project.description}
+                  </p>
+
+                  {/* Technologies */}
+                  <div className="flex flex-wrap gap-1 mb-4">
+                    {project.technologies.map((tech, techIndex) => (
+                      <span
+                        key={techIndex}
+                        className="px-2 py-1 bg-purple-100 text-purple-700 rounded-full text-xs font-medium"
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+
+                  {/* Action Buttons */}
+                  <div className="flex gap-2 mt-auto">
                     <a
                       href={project.github}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="p-2 sm:p-3 bg-white/90 rounded-full text-gray-800 hover:bg-white transition-colors duration-200"
+                      className="flex-1 flex items-center justify-center gap-1 px-3 py-2 bg-gray-800 text-white rounded-lg hover:bg-gray-700 transition-colors duration-200 text-xs"
                     >
-                      <FaGithub className="text-lg sm:text-xl" />
+                      <FaGithub />
+                      Code
                     </a>
                     <a
                       href={project.live}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="p-2 sm:p-3 bg-white/90 rounded-full text-gray-800 hover:bg-white transition-colors duration-200"
+                      className="flex-1 flex items-center justify-center gap-1 px-3 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors duration-200 text-xs"
                     >
-                      <FaExternalLinkAlt className="text-lg sm:text-xl" />
+                      <FaExternalLinkAlt />
+                      Live
                     </a>
                   </div>
-                </div>
-
-                {/* Project Info */}
-                <div className="flex items-center gap-2 mb-2 sm:mb-3">
-                  <FaCode className="text-purple-600" />
-                  <h3 className="text-lg sm:text-xl font-bold text-gray-800 font-dancing">
-                    {project.title}
-                  </h3>
-                </div>
-
-                <p className="text-sm sm:text-base text-gray-600 mb-3 sm:mb-4 leading-relaxed">
-                  {project.description}
-                </p>
-
-                {/* Technologies */}
-                <div className="flex flex-wrap gap-1 sm:gap-2 mb-4 sm:mb-6">
-                  {project.technologies.map((tech, techIndex) => (
-                    <span
-                      key={techIndex}
-                      className="px-2 sm:px-3 py-1 bg-purple-100 text-purple-700 rounded-full text-xs sm:text-sm font-medium"
-                    >
-                      {tech}
-                    </span>
-                  ))}
-                </div>
-
-                {/* Action Buttons */}
-                <div className="flex gap-2 sm:gap-3 mt-auto">
-                  <a
-                    href={project.github}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex-1 flex items-center justify-center gap-1 sm:gap-2 px-3 sm:px-4 py-2 bg-gray-800 text-white rounded-lg hover:bg-gray-700 transition-colors duration-200 text-sm sm:text-base"
-                  >
-                    <FaGithub />
-                    Code
-                  </a>
-                  <a
-                    href={project.live}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex-1 flex items-center justify-center gap-1 sm:gap-2 px-3 sm:px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors duration-200 text-sm sm:text-base"
-                  >
-                    <FaExternalLinkAlt />
-                    Live
-                  </a>
-                </div>
-              </GlassCard>
+                </GlassCard>
+              </MaskEffect>
             </div>
           ))}
         </div>

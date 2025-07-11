@@ -25,6 +25,9 @@ export default {
         'slide-up': 'slide-up 0.4s ease-out forwards',
         'float': 'float 3s ease-in-out infinite',
         'glow': 'glow 2s ease-in-out infinite',
+        'parallax-slow': 'parallax-slow 20s ease-in-out infinite',
+        'parallax-medium': 'parallax-medium 15s ease-in-out infinite',
+        'parallax-fast': 'parallax-fast 10s ease-in-out infinite',
       },
       keyframes: {
         sway: {
@@ -59,6 +62,21 @@ export default {
         'glow': {
           '0%, 100%': { boxShadow: '0 0 20px rgba(139, 92, 246, 0.3)' },
           '50%': { boxShadow: '0 0 30px rgba(139, 92, 246, 0.6)' },
+        },
+        'parallax-slow': {
+          '0%, 100%': { transform: 'translateY(0px) translateX(0px)' },
+          '25%': { transform: 'translateY(-10px) translateX(5px)' },
+          '50%': { transform: 'translateY(-5px) translateX(-5px)' },
+          '75%': { transform: 'translateY(5px) translateX(10px)' },
+        },
+        'parallax-medium': {
+          '0%, 100%': { transform: 'translateY(0px) translateX(0px)' },
+          '33%': { transform: 'translateY(8px) translateX(-8px)' },
+          '66%': { transform: 'translateY(-8px) translateX(8px)' },
+        },
+        'parallax-fast': {
+          '0%, 100%': { transform: 'translateY(0px) translateX(0px)' },
+          '50%': { transform: 'translateY(15px) translateX(-10px)' },
         },
       },
       backdropBlur: {
